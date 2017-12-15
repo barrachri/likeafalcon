@@ -10,7 +10,7 @@ COPY requirements /src/requirements
 
 # Install python packages
 RUN pip install protobuf
-RUN pip --no-cache-dir install -r requirements/common.txt
+RUN pip --no-cache-dir install -Ur requirements/common.txt
 
 COPY . /src
 

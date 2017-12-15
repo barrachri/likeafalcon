@@ -1,6 +1,4 @@
-"""
-Test API.
-"""
+"""Test API."""
 
 import asyncio
 import json
