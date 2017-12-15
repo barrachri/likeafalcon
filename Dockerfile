@@ -9,8 +9,9 @@ WORKDIR /src
 COPY requirements /src/requirements
 
 # Install python packages
+RUN pip install protobuf
 RUN pip --no-cache-dir install -r requirements/common.txt
 
 COPY . /src
 
-CMD ["python", "app.py", "0.0.0.0"]
+CMD ["python", "main.py", "0.0.0.0"]
