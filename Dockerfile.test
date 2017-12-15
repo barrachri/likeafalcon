@@ -1,0 +1,15 @@
+FROM python:3.6.3
+
+LABEL maintainer "barrachri@gmail.com"
+
+USER root
+
+RUN mkdir /src
+WORKDIR /src
+COPY . /src
+
+# Install python packages
+RUN pip install tox
+
+# Configure container startup
+CMD ["tox"]
