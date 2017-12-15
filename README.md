@@ -1,7 +1,10 @@
-# LikeaFalcon app
+# LikeAFalcon app
 [![Build Status](https://travis-ci.org/barrachri/likeafalcon.svg?branch=pyup-config)](https://travis-ci.org/barrachri/likeafalcon)
 [![codecov](https://codecov.io/gh/barrachri/likeafalcon/branch/master/graph/badge.svg)](https://codecov.io/gh/barrachri/likeafalcon)
 [![Updates](https://pyup.io/repos/github/barrachri/likeafalcon/shield.svg)](https://pyup.io/repos/github/barrachri/likeafalcon/)
+
+![falcon meme](http://s2.quickmeme.com/img/a8/a878a7df8054f0c4d15fd5523746e3727eb45d593ecaea77b9729adbbc571782.jpg "Falcon meme!")
+
 
 ## Intro
 this
