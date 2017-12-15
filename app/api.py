@@ -1,12 +1,11 @@
+from json import JSONDecodeError
+
 from aiohttp import web
 from rampante import streaming
-from app.models import Event
 from sqlalchemy import select
+
+from app.models import Event
 from app.serializers import EventSchema
-import aiohttp
-from json import JSONDecodeError
-import os
-from config import Config as C
 
 
 async def handle(request):
@@ -40,8 +39,8 @@ async def query_db(request):
 
     schema, _ = EventSchema(many=True).dump(data)
     body = {
-            "events": schema,
-            "limit": limit,
-            "offset": offset
-        }
+        "events": schema,
+        "limit": limit,
+        "offset": offset
+    }
     return web.json_response(body)

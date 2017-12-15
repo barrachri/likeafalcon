@@ -3,11 +3,10 @@
 import logging
 import os
 
-from aiohttp import web
 import aiohttp
+from aiohttp import web
 
 from config import Config as C
-
 
 log = logging.getLogger(__name__)
 

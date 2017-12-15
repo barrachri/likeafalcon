@@ -2,8 +2,8 @@
 Test API.
 """
 
-import json
 import asyncio
+import json
 
 
 async def test_no_data(cli):

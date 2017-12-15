@@ -1,5 +1,5 @@
+from marshmallow import Schema, fields
 
-from marshmallow import Schema, fields, post_dump
 
 class EventSchema(Schema):
     """Serializer for events."""

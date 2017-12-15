@@ -1,14 +1,8 @@
-from aiohttp import web
-import pytest
-from app import routes
-
 import asyncio
-import logging
-import logging.config
 
+import pytest
+from aiohttp import web
 from aiohttp.test_utils import TestClient, TestServer
-from aiopg.sa import create_engine as aiopg_create_engine
-from psycopg2 import OperationalError
 from sqlalchemy import create_engine
 from sqlalchemy.schema import CreateTable
 from sqlalchemy_utils.functions import (
@@ -16,15 +10,17 @@ from sqlalchemy_utils.functions import (
     database_exists,
     drop_database,
 )
+
+from app import routes
+from app.models import Event
 from config import Config as C
 from main import (
     add_route,
     start_db_pool,
-    stop_db_pool,
     start_task_manager,
+    stop_db_pool,
     stop_task_manager,
 )
-from app.models import Event
 
 
 @pytest.fixture(scope="session")
@@ -35,6 +31,7 @@ def loop():
 
     # Clean-up
     loop.close()
+
 
 @pytest.fixture(scope="session", autouse=True)
 def test_client(loop):
@@ -66,7 +63,6 @@ def create_tables():
         drop_database(DB_URI)
     create_database(DB_URI)
     engine = create_engine(DB_URI)
-
     conn = engine.connect()
     models = [Event]
     for model in models:

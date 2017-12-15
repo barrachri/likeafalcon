@@ -1,13 +1,14 @@
-from app import routes
-from aiohttp import web
-from rampante import streaming, scheduler
 import asyncio
-from config import Config as C
+import logging
+import logging.config
+
+from aiohttp import web
 from aiopg.sa import create_engine
 from psycopg2 import OperationalError
-import logging.config
-import logging
-from collections import defaultdict
+from rampante import scheduler, streaming
+
+from app import routes
+from config import Config as C
 
 logging.config.dictConfig(C.DEFAULT_LOGGING)
 log = logging.getLogger(__name__)
