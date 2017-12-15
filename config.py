@@ -7,6 +7,9 @@ log = logging.getLogger(__name__)
 class Config():
     """General config class."""
 
+    # Base folder
+    BASE = os.path.dirname(__file__)
+
     # STREAM
     STREAM_URI = os.getenv("STREAM_URI", "nats://127.0.0.1:4222")
 

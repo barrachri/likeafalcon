@@ -1,10 +1,19 @@
 from aiohttp import web
-from json.decoder import JSONDecodeError
 from rampante import streaming
 from app.models import Event
 from sqlalchemy import select
 from app.serializers import EventSchema
 import aiohttp
+from json import JSONDecodeError
+import os
+from config import Config as C
+
+async def index(request):
+    """Return a html page where you can get updates through ws."""
+    WS_FILE = os.path.join(C.BASE, 'templates/websocket.html')
+    print(WS_FILE)
+    with open(WS_FILE, 'rb') as fp:
+        return web.Response(body=fp.read(), content_type='text/html')
 
 
 async def handle(request):
