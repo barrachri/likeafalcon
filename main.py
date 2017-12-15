@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import logging.config
+import sys
 
 from aiohttp import web
 from aiopg.sa import create_engine
@@ -41,14 +42,14 @@ async def start_db_pool(app):
 
 
 async def stop_db_pool(app):
-    """Cancel db pool."""
+    """Cancel db connection."""
     if 'db' in app:
         app['db'].close()
         await app["db"].wait_closed()
 
 
 async def start_task_manager(app):
-    """Connect to the streams and start task manager."""
+    """Connect to the streams and start the task manager."""
     await streaming.start(
         server=C.STREAM_URI, client_name="service-01", service_group="service-likeafalcon", loop=app.loop)
     app['task_manager'] = asyncio.ensure_future(
@@ -64,6 +65,9 @@ async def stop_task_manager(app):
 
 
 if __name__ == "__main__":
+    host = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'
+    port = int(sys.argv[2]) if len(sys.argv) > 2 else 8080
+
     app = web.Application()
     add_route(app, *routes)
     # On-startup tasks
@@ -75,4 +79,4 @@ if __name__ == "__main__":
 
     # set of ws connection
     app['websockets'] = set()
-    web.run_app(app)
+    web.run_app(app, host=host, port=port)
