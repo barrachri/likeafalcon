@@ -48,7 +48,7 @@ async def stop_db_pool(app):
 
 
 async def start_task_manager(app):
-    """Connect to the streams."""
+    """Connect to the streams and start task manager."""
     await streaming.start(
         server=C.STREAM_URI, client_name="service-01", service_group="service-likeafalcon", loop=app.loop)
     app['task_manager'] = asyncio.ensure_future(
@@ -61,6 +61,7 @@ async def stop_task_manager(app):
     if 'task_manager' in app:
         app['task_manager'].cancel()
         await app['task_manager']
+
 
 if __name__ == "__main__":
     app = web.Application()

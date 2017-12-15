@@ -1,3 +1,5 @@
+"""APIs handlers."""
+
 from json import JSONDecodeError
 
 from aiohttp import web

@@ -1,4 +1,4 @@
-"""API endpoints."""
+"""Views handlers."""
 
 import logging
 import os

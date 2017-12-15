@@ -1,3 +1,5 @@
+"""app routes."""
+
 from app.api import handle, query_db
 from app.views import index, websocket
 
