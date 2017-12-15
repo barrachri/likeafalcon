@@ -41,7 +41,6 @@ def test_client(loop):
     clients = []
 
     async def go(__param, *args, server_kwargs=None, **kwargs):
-
         server_kwargs = server_kwargs or {}
         server = TestServer(__param, loop=loop, **server_kwargs)
         client = TestClient(server, loop=loop, **kwargs)
@@ -84,4 +83,6 @@ def cli(loop, test_client, create_tables):
     # Clean-up tasks
     app.on_cleanup.append(stop_task_manager)
     app.on_cleanup.append(stop_db_pool)
+    # set of ws connection
+    app['websockets'] = set()
     return loop.run_until_complete(test_client(app))
