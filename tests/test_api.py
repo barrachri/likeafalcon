@@ -1,5 +1,10 @@
+"""
+Test API.
+"""
+
 import json
 import asyncio
+
 
 async def test_no_data(cli):
     resp = await cli.post('/v1/json')

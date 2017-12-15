@@ -1,3 +1,5 @@
+"""Event watchers."""
+
 from rampante import subscribe_on
 from app.models import Event
 import logging
