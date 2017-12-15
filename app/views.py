@@ -4,20 +4,22 @@ from rampante import streaming
 from app.models import Event
 from sqlalchemy import select
 from app.serializers import EventSchema
+import aiohttp
 
 
 async def handle(request):
     try:
         data = await request.json()
     except JSONDecodeError:
-        return web.json_response(
-            {"message": "Error inside your format message."}, status=400
-            )
+        body = {"message": "Error inside your format message."}
+        return web.json_response(body, status=400)
     if not data:
         return web.json_response({"message": "Empty json."}, status=400)
 
     await streaming.publish("like.a.falcon", data)
-
+    # send data to active websockets
+    for ws in request.app['websockets']:
+        await ws.send_json(data)
     return web.json_response({"message": "We got your message."})
 
 
@@ -44,4 +46,20 @@ async def query_db(request):
 
 
 async def websocket(request):
-    return web.json_response({})
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+
+    request.app['websockets'].add(ws)
+
+    async for msg in ws:
+        if msg.type == aiohttp.WSMsgType.TEXT:
+            if msg.data == 'close':
+                request.app['websockets'].discard(ws)
+                await ws.close()
+        elif msg.type == aiohttp.WSMsgType.ERROR:
+            print('ws connection closed with exception %s' %
+                  ws.exception())
+
+    print('websocket connection closed')
+
+    return ws

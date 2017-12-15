@@ -7,6 +7,7 @@ from aiopg.sa import create_engine
 from psycopg2 import OperationalError
 import logging.config
 import logging
+from collections import defaultdict
 
 logging.config.dictConfig(C.DEFAULT_LOGGING)
 log = logging.getLogger(__name__)
@@ -69,4 +70,7 @@ if __name__ == "__main__":
     # Clean-up tasks
     app.on_cleanup.append(stop_task_manager)
     app.on_cleanup.append(stop_db_pool)
+
+    # set of ws connection
+    app['websockets'] = set()
     web.run_app(app)
