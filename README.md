@@ -7,7 +7,7 @@
 
 
 ## Intro
-`LikeAFalcone` is an event driven system, receives an event, the event is then sent to a [NATS Stream](https://nats.io/documentation/streaming/nats-streaming-intro/).
+`LikeAFalcone` is an event driven system, receives an event and then sent it to a [NATS Stream](https://nats.io/documentation/streaming/nats-streaming-intro/).
 
 After that watchers will receive notifications depending from the queue in which the event has been written, in this case `like.a.falcon`.
 
@@ -15,19 +15,19 @@ The watcher will then save the event inside a db.
 
 You can access a real-time stream using websockets (`/ws`) or query the db for the events stored (`/query`).
 
-This project uses [rampante](https://github.com/barrachri/rampante) a small collection of helpers to work with streams and aiohttp.
+This project uses [rampante](https://github.com/barrachri/rampante), a small collection of helpers to work with streams and aiohttp.
 
 Main parts of this app are:
 
-* app/api.py
+* __app/api.py__
 
     Create new events and query the db
 
-* app/views.py
+* __app/views.py__
 
-    Websocket page and websocket endpoint
+    Websocket offered through a webpage and websocket endpoint
 
-* app/watchers.py
+* __app/watchers.py__
 
     Watch for new events
 
@@ -77,16 +77,16 @@ The content will be fired to the event stream and then saved inside the database
 
 ### `/query?limit={10}&offset={0}`
 
-Return json body with a list of events actually stored inside the database.
+Return json body with a list of events stored inside the database.
 You can specify an offset and limit, by default they are 0 and 10.
 
 ### `/ws`
 
-Connect to the websocket and receive in real-time the event sent to `/v1/json`.
+Connect to the websocket and receive real-time events sent to `/v1/json`.
 
 ### `/`
 
-A html web page that offers a connection to the `/ws` endpoint (websocket).
+An html web page that offers a connection to the `/ws` endpoint (websocket).
 You will see in real-time the event sent to `/v1/json`.
 
 ## To-Do
