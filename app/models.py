@@ -1,6 +1,4 @@
-"""
-App models.
-"""
+"""App models."""
 
 from sqlalchemy import (
     JSON,
