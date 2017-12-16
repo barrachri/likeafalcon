@@ -7,8 +7,9 @@
 
 
 ## Intro
-`LikeAFalcone` is an event driven system, receives an event the event is then sent to a [NATS Stream](https://nats.io/documentation/streaming/nats-streaming-intro/).
-After that watchers will receive notifications depending from the queue in which the event has benn written, in this case `like.a.falcon`.
+`LikeAFalcone` is an event driven system, receives an event, the event is then sent to a [NATS Stream](https://nats.io/documentation/streaming/nats-streaming-intro/).
+
+After that watchers will receive notifications depending from the queue in which the event has been written, in this case `like.a.falcon`.
 
 The watcher will then save the event inside a db.
 
@@ -22,7 +23,8 @@ This project uses [rampante](https://github.com/barrachri/rampante) a small coll
 Python 3.6.3
 
 ## How to test it
-Tests are written using PyTest, there also a linting part before running the tests using `flake8` and `isort`.
+Tests are written using PyTest, there is also a linting part before running the tests using `flake8` and `isort`.
+
 ```python
 make run-services
 pip install tox
