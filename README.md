@@ -17,6 +17,19 @@ You can access a real-time stream using websockets (`/ws`) or query the db for t
 
 This project uses [rampante](https://github.com/barrachri/rampante) a small collection of helpers to work with streams and aiohttp.
 
+Main parts of this app are:
+
+* app/api.py
+
+    Create new events and query the db
+
+* app/views.py
+
+    Websocket page and websocket endpoint
+
+* app/watchers.py
+
+    Watch for new events
 
 ## Requirements
 
