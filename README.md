@@ -7,7 +7,7 @@
 
 
 ## Intro
-`LikeAFalcone` is an event driven system, receives an event and then sent it to a [NATS Stream](https://nats.io/documentation/streaming/nats-streaming-intro/).
+`LikeAFalcon` is an event driven system, receives an event and then sent it to a [NATS Stream](https://nats.io/documentation/streaming/nats-streaming-intro/).
 
 After that watchers will receive notifications depending from the queue in which the event has been written, in this case `like.a.falcon`.
 
