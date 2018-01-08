@@ -1,5 +1,5 @@
 aiohttp==2.3.7
-aiopg==0.13.1
+aiopg==0.13.2
 marshmallow==2.15.0
 psycopg2==2.7.3.2
 rampante==0.0.10
