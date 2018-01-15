@@ -3,4 +3,4 @@ aiopg==0.13.2
 marshmallow==2.15.0
 psycopg2==2.7.3.2
 rampante==0.0.10
-SQLAlchemy==1.1.15
+SQLAlchemy==1.2.0
