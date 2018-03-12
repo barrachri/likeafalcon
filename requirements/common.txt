@@ -2,5 +2,5 @@ aiohttp==3.0.7
 aiopg==0.13.2
 marshmallow==2.15.0
 psycopg2==2.7.4
-rampante==0.0.13
+rampante==0.0.14
 SQLAlchemy==1.2.4
